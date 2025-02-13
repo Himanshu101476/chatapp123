@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="sidebar">
+        <div class="user-header">
+            <span class="current-user">{{ current_user.username }}</span>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </div>
+        <ul class="user-list"></ul>
+    </div>
+    <div class="chat-window">
+        <div class="messages"></div>
+        <form class="message-form">
+            <input type="text" class="message-input" placeholder="Type a message...">
+            <button type="submit" class="send-button">Send</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const currentUserId = {{ current_user.id }};
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
